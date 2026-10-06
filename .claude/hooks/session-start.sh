@@ -21,8 +21,8 @@ fi
 service postgresql start >/dev/null
 until pg_isready -q -h localhost -p 5432; do sleep 1; done
 su postgres -c "psql -q -c \"ALTER USER postgres PASSWORD 'postgres';\""
-if ! su postgres -c "psql -tAc \"SELECT 1 FROM pg_database WHERE datname='nest_prisma_starter'\"" | grep -q 1; then
-  su postgres -c "createdb nest_prisma_starter"
+if ! su postgres -c "psql -tAc \"SELECT 1 FROM pg_database WHERE datname='nest_starter'\"" | grep -q 1; then
+  su postgres -c "createdb nest_starter"
 fi
 
 # Redis
